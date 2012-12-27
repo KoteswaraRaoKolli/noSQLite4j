@@ -1,0 +1,111 @@
+Lite NoSQL database or rather JSON based database. Very simple to implement.
+
+noSQl4j-config is where you specify the location of the datastore.You need to export java-json.jar in your classpath.
+
+/////////////////
+Creating Table
+
+package org.NoSQLite4j.test;
+
+import java.io.IOException;
+
+public class TestTableCreation {
+	public static void main(String [] args) throws IOException
+	{
+		try{
+		ArrayList<String> ColumnFamily = new ArrayList<String>();
+		ColumnFamily.add("user1");
+		CreateTable table = new CreateTable("shop3");
+		table.setColumnFamilies(ColumnFamily);
+		table.createTable();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+   
+}
+
+
+
+//Adding records
+
+package org.NoSQLite4j.test;
+
+import java.io.IOException;
+
+public class TestPut {
+	public static void main(String [] args) throws IOException, NullPointerException
+	{
+		try{
+		Put table = new Put("shop2","user1","shopped10","date1","article15");
+		table.add();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+
+//Fetching record
+
+package org.NoSQLite4j.test;
+
+import java.io.IOException;
+
+import org.nosqlite4j.core.dml.Get;
+
+public class TestGet {
+	public static void main(String [] args) throws IOException, NullPointerException
+	{
+		try{
+		
+		Get table = new Get("shop2","user1","shopped","date");
+		System.out.println(table.get());
+		Get table2 = new Get("shop2","user1","shopped");
+		System.out.println(table2.get());
+	
+		Get table3 = new Get("shop2","user1");
+		System.out.println(table3.get());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+
+//Scanning record
+
+package org.NoSQLite4j.test;
+
+import java.io.IOException;
+
+import org.nosqlite4j.core.dml.Scan;
+
+public class TestScan {
+	public static void main(String [] args) throws IOException, NullPointerException
+	{
+		try{
+		Scan table = new Scan("shop2");
+		System.out.println(table.scan());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+//For more details look at the test cases
+	
+ 

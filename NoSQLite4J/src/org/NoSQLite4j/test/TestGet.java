@@ -9,9 +9,9 @@ public class TestGet {
 	{
 		try{
 		
-		Get table = new Get("Shop3","user2","shopped","date");
+		Get table = new Get("Shop6","user2","shopped10","date1");
 		System.out.println(table.get());
-		Get table2 = new Get("shop2","user1","shopped");
+		Get table2 = new Get("shop2","user2","shopped");
 		System.out.println(table2.get());
 	
 		Get table3 = new Get("Shop3","user2");

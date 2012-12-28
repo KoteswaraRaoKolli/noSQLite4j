@@ -7,7 +7,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.json.JSONException;
 import org.nosqlite4j.core.DBManager;
+import org.nosqlite4j.core.MetaStore;
 
 public class Scan extends DBManager{
 	private String Result = "";
@@ -16,14 +18,23 @@ public class Scan extends DBManager{
 	{
 		setTable(tablename);
 	}
-	public String scan() throws IOException
+	public String scan() throws IOException, JSONException
 	{
 		long StartTime = System.currentTimeMillis();
 		File file = new File(getDBloc()+"/"+Table+"/");
+		MetaStore meta = new MetaStore();
+		meta.setTable(Table);
+		if(meta.checkTable())
+		{
 		 read(file);
-		 long endTime = System.currentTimeMillis();
-			System.out.println("Time Taken : "+(endTime-StartTime)+" ms");
-			 return Result;
+		
+		}
+		else{
+		System.err.println("Table does not exist");
+		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("Time Taken : "+(endTime-StartTime)+" ms");
+			return Result;
 
 	}
 	

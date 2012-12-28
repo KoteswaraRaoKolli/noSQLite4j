@@ -8,7 +8,7 @@ public class TestScan {
 	public static void main(String [] args) throws IOException, NullPointerException
 	{
 		try{
-		Scan table = new Scan("shop2");
+		Scan table = new Scan("shop3");
 		System.out.println(table.scan());
 		}
 		catch(Exception e)

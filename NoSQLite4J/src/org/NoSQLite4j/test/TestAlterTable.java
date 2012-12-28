@@ -8,7 +8,7 @@ public class TestAlterTable {
 	public static void main(String [] args) throws IOException
 	{
 		try{
-		AlterTable table = new AlterTable("Shop5","Shop6");
+		AlterTable table = new AlterTable("shop3","Shop6");
 		table.alter();
 		}
 		catch(Exception e)

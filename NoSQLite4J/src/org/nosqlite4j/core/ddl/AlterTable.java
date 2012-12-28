@@ -1,9 +1,11 @@
 package org.nosqlite4j.core.ddl;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONException;
+import org.nosqlite4j.core.Configuration;
 import org.nosqlite4j.core.MetaStore;
 
 public class AlterTable {
@@ -35,6 +37,10 @@ public class AlterTable {
 		{
 		
 		meta.alterEntry(newTableName);
+		Configuration config = new Configuration();
+		File dir = new File(config.getDBLoc()+"/"+TableName);
+		File newDir = new File(config.getDBLoc()+"/"+newTableName);
+		dir.renameTo(newDir);
 		System.out.println("Table Altered");
 		}
 		else

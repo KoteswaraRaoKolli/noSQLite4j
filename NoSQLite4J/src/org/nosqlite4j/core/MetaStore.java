@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -67,6 +68,38 @@ public class MetaStore {
 			  
 	}
 	
+
+	public void alterEntry(String tablename)
+	{
+		try{
+			 
+			 String metaContent = this.metaReader();
+
+		if(metaContent.equals(""))
+		{
+			System.err.println("Table does not exist");
+		
+		}
+		else{
+			StoreThis = new JSONObject(metaContent);
+		}
+			 JSONArray JArr = new JSONArray(StoreThis.get(Table).toString());
+			  StoreThis.remove(Table);
+			  StoreThis.put(tablename, JArr);
+			  
+			  
+		
+			
+			  FileWriter fstream = new FileWriter(DBloc+"/"+"metastore");
+			  BufferedWriter out = new BufferedWriter(fstream);
+			  out.write(StoreThis.toString());
+			  out.close();
+			  }catch (Exception e){
+				  e.printStackTrace();
+			  }	
+		
+	}
+	
 	public void update()
 	{
 		 try{
@@ -81,7 +114,8 @@ public class MetaStore {
 		else{
 			StoreThis = new JSONObject(metaContent);
 		}
-			  StoreThis.put(Table, ColumnFamily);
+		JSONArray JArr = new JSONArray(ColumnFamily);
+			  StoreThis.put(Table, JArr);
 			  
 		
 			

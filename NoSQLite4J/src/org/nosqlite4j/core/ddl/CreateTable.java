@@ -43,7 +43,7 @@ public class CreateTable {
 			System.err.println("Table Exists");
 		}
 		else{
-		meta.update();
+		
 		
 		
 		
@@ -70,6 +70,7 @@ while(count > 0)
 			 (new File(columnFamilyDir)).mkdirs();
 			count--; 
 		 }
+meta.update();
 System.out.println("Table Created");
 		}
 		long endTime = System.currentTimeMillis();

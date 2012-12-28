@@ -9,12 +9,12 @@ public class TestGet {
 	{
 		try{
 		
-		Get table = new Get("shop2","user1","shopped","date");
+		Get table = new Get("Shop3","user2","shopped","date");
 		System.out.println(table.get());
 		Get table2 = new Get("shop2","user1","shopped");
 		System.out.println(table2.get());
 	
-		Get table3 = new Get("shop2","user1");
+		Get table3 = new Get("Shop3","user2");
 		System.out.println(table3.get());
 		}
 		catch(Exception e)

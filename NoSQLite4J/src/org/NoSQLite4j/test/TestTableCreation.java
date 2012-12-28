@@ -10,7 +10,8 @@ public class TestTableCreation {
 	{
 		try{
 		ArrayList<String> ColumnFamily = new ArrayList<String>();
-		ColumnFamily.add("user1");
+		ColumnFamily.add("user2");
+		ColumnFamily.add("user3");
 		CreateTable table = new CreateTable("shop3");
 		table.setColumnFamilies(ColumnFamily);
 		table.createTable();
